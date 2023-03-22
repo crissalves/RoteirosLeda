@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-03-17T11:31:58.062-0300</date>
+  <logger>CRISTIAN ALVES DA SILVA</logger>
+  <level>FINE</level>
+  <message>File 119211092-CRISTIAN ALVES DA SILVA.zip was received. It was sent by CRISTIAN ALVES DA SILVA from IP 150.165.42.206 at 17-03-2023 11*31*52</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-03-17T11:34:02.496-0300</date>
+  <logger>CRISTIAN ALVES DA SILVA</logger>
+  <level>FINE</level>
+  <message>File 119211092-CRISTIAN ALVES DA SILVA.zip was received. It was sent by CRISTIAN ALVES DA SILVA from IP 150.165.42.206 at 17-03-2023 11*34*02</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-03-22T09:43:45.841-0300</date>
+  <logger>CRISTIAN ALVES DA SILVA</logger>
+  <level>FINE</level>
+  <message>File 119211092-CRISTIAN ALVES DA SILVA.zip was received. It was sent by CRISTIAN ALVES DA SILVA from IP 150.165.42.206 at 22-03-2023 09*43*45</message>
+</record>

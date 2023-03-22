@@ -42,8 +42,12 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for(int i = 0; i < this.produtos.length; i++){
+			if(produtos[i].getCodigo() == codigo){
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -53,16 +57,19 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+
+		if(procurarIndice(codigo) != -1){
+			return true;
+		} else{
+			return false;
+		}
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(ProdutoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		this.produtos[index++] = produto;
 	}
 
 	/**
@@ -71,8 +78,11 @@ public class RepositorioProdutoPerecivelArray {
 	 * utilizado.
 	 */
 	public void atualizar(ProdutoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(procurarIndice(produto.getCodigo()) != -1){
+			this.produtos[procurarIndice(produto.getCodigo())] = produto;
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
 
 	/**
@@ -83,8 +93,17 @@ public class RepositorioProdutoPerecivelArray {
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(procurarIndice(codigo) != -1){
+			this.produtos[procurarIndice(codigo)] = null;
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
+
+	//	for(int i = 0; i < this.produtos.length; i++){
+		//	if(this.produtos[i].getCodigo() == codigo){
+			//	this.produtos[i] = null;
+			//}
+		//}
 	}
 
 	/**
@@ -95,7 +114,11 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	public ProdutoPerecivel procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(procurarIndice(codigo) != -1){
+			return this.produtos[(procurarIndice(codigo))];
+		} else {
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
+
 }

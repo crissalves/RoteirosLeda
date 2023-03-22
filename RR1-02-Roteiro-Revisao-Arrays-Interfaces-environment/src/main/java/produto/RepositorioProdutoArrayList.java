@@ -53,14 +53,16 @@ public class RepositorioProdutoArrayList {
 	 */
 	public boolean existe(int codigo) {
 		int i = this.procurarIndice(codigo);
-		return i == -1;
+		boolean resp = (i != -1);
+
+		return resp;
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(Produto produto) {
-		produtos.add(produto);
+		this.produtos.add(produto);
 	}
 
 	/**
@@ -69,11 +71,11 @@ public class RepositorioProdutoArrayList {
 	 * utilizado.
 	 */
 	public void atualizar(Produto produto) {
-		if (!produtos.contains(produto)){
+		if (!this.produtos.contains(produto)){
 			throw new RuntimeException("Produto inexistente");
 		} else{
-			produtos.remove(produto);
-			produtos.add(produto);
+			this.produtos.remove(produto);
+			this.produtos.add(produto);
 		}
 	}
 
@@ -86,7 +88,7 @@ public class RepositorioProdutoArrayList {
 	 */
 	public void remover(int codigo) {
 		if (this.existe(codigo)){
-			produtos.remove(new Produto(codigo,null,0,null));
+			this.produtos.remove(new Produto(codigo,null,0,null));
 		} else {
 			throw new RuntimeException("Produto inexistente");
 		}
@@ -100,15 +102,12 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public Produto procurar(int codigo) {
-		Produto resp = null;
 		int index = this.procurarIndice(codigo);
 		if (index != -1) {
-			resp = (Produto) this.produtos.get(index);
+			return (Produto) this.produtos.get(index);
 		} else {
-			throw new RuntimeException("Produto inexistente");
+			return null;
 		}
-
-		return resp;
 	}
 }
 
