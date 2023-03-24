@@ -41,8 +41,12 @@ public class RepositorioProdutoNaoPerecivelArray {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for(int i = 0; i< this.produtos.length; i++){
+			if(this.produtos[i].getCodigo() == codigo){
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -52,16 +56,15 @@ public class RepositorioProdutoNaoPerecivelArray {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(codigo);
+		return i != -1;
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(ProdutoNaoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		this.produtos[++this.index] = produto;
 	}
 
 	/**
@@ -70,8 +73,12 @@ public class RepositorioProdutoNaoPerecivelArray {
 	 * utilizado.
 	 */
 	public void atualizar(ProdutoNaoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(produto.getCodigo());
+		if(i != -1){
+			this.produtos[i] = produto;
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
 
 	/**
@@ -82,8 +89,12 @@ public class RepositorioProdutoNaoPerecivelArray {
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(codigo);
+		if(i != -1){
+			this.produtos[i] = null;
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
 
 	/**
@@ -94,8 +105,12 @@ public class RepositorioProdutoNaoPerecivelArray {
 	 * @return
 	 */
 	public ProdutoNaoPerecivel procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(codigo);
+		if(i != -1){
+			return this.produtos[i];
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
 
 }

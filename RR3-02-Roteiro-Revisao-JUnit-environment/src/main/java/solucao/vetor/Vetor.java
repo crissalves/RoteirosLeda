@@ -1,8 +1,9 @@
-package vetor;
+package solucao.vetor;
 
 import java.util.Comparator;
 
 import vetor.Aluno;
+
 /**
  * Implementação de um vetor de objetos simples para exercitar os conceitos de
  * Generics.

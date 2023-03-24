@@ -42,8 +42,12 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for(int i = 0; i< this.produtos.length; i++){
+			if(this.produtos[i].getCodigo() == codigo){
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	/**
@@ -53,16 +57,15 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(codigo);
+		return i != -1;
 	}
 
 	/**
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(ProdutoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		this.produtos[++this.index] = produto;
 	}
 
 	/**
@@ -71,8 +74,12 @@ public class RepositorioProdutoPerecivelArray {
 	 * utilizado.
 	 */
 	public void atualizar(ProdutoPerecivel produto) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(produto.getCodigo());
+		if(i != -1){
+			this.produtos[i] = produto;
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
 
 	/**
@@ -83,8 +90,12 @@ public class RepositorioProdutoPerecivelArray {
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(codigo);
+		if(i != -1){
+			this.produtos[i] = null;
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
 
 	/**
@@ -95,7 +106,11 @@ public class RepositorioProdutoPerecivelArray {
 	 * @return
 	 */
 	public ProdutoPerecivel procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int i = procurarIndice(codigo);
+		if(i != -1){
+			return this.produtos[i];
+		}else{
+			throw new RuntimeException("Produto inexistente");
+		}
 	}
 }
