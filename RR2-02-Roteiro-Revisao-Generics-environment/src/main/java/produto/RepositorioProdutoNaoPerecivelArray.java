@@ -14,11 +14,8 @@ package produto;
  * @author Adalberto
  *
  */
-public class RepositorioProdutoNaoPerecivelArray {
-	/**
-	 * A estrutura (array) onde os produtos sao mantidos.
-	 */
-	private ProdutoNaoPerecivel[] produtos;
+public class RepositorioProdutoNaoPerecivelArray extends
+		RepositorioProdutosArray<ProdutoNaoPerecivel> {
 
 	/**
 	 * A posicao do ultimo elemento inserido no array de produtos. o valor
