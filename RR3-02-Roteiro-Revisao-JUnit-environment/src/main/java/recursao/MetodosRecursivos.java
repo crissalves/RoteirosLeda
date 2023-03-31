@@ -31,7 +31,6 @@ public class MetodosRecursivos {
 
 	public int calcularFibonacci(int n) {
 		int result = 1;
-
 		if (n == 1 || n == 2) {
 			return result;
 		} else {
@@ -52,7 +51,7 @@ public class MetodosRecursivos {
 			result++;
 		}
 		if (i != array.length - 1) { 
-			result = result + countNotNull(array, i);
+			result = result + countNotNull(array, i++);
 		}
 		return result;
 	}
