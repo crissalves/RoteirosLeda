@@ -9,22 +9,20 @@ import sorting.AbstractSorting;
  * sorted.
  */
 public class BubbleSort<T extends Comparable<T>> extends AbstractSorting<T> {
-
+	
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		do{
-			boolean swapped = false;
-			int indice = leftIndex;
-			for(int i = 1; i < rightIndex; i++){
-				if(compareTo(array[indice]) > compareTo(array[i])){
-					Util.swap(array, indice, i);
-					swapped = True;
-					indice ++;
-				}else{
-					indice ++;
+		if(leftIndex < rightIndex) {
+			boolean swapped;
+			do{
+				swapped = false;
+				for(int i = leftIndex; i < rightIndex; i++){
+					if(array[i].compareTo(array[i+1]) > 0){
+						Util.swap(array, i+1, i);
+						swapped = true;
+					}
 				}
-			}
-			indice = leftIndex;
-		}while (swapped);
+			}while (swapped);
+		}
 	}
 }

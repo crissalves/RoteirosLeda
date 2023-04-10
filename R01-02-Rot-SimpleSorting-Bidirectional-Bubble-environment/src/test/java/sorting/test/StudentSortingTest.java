@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
+import sorting.simpleSorting.*;
+import sorting.variationsOfBubblesort.*;
+import sorting.variationsOfSelectionsort.*;
 
 public class StudentSortingTest {
 
@@ -36,9 +39,13 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
+		this.implementation = new BubbleSort<>();
+		this.implementation = new InsertionSort<>();
+		this.implementation = new SelectionSort<>();
+		this.implementation = new RecursiveBubbleSort<>();
+		this.implementation = new BidirectionalBubbleSort<>();
+		this.implementation = new RecursiveSelectionSort<>();
 	
-		this.implementation = null;
-		Assert.fail("Implementation not provided");
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {
