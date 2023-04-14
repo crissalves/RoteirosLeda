@@ -48,7 +48,7 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 			hybridMergesort(array, middle+1,leftIndex);
 			merge(array,leftIndex,meio,rightIndex);
 		}else{
-			inserTionSort(array, leftIndex, leftIndex);
+			insertionSort(array, leftIndex, leftIndex);
 		}
 	}
 
@@ -89,7 +89,7 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	}
 
 	
-	private void inserTionSort(T[] array, int leftIndex, int rightIndex){
+	private void insertionSort(T[] array, int leftIndex, int rightIndex){
 		INSERTIONSORT_APPLICATIONS ++;
 		if(leftIndex < rightIndex) {
 			for(int i = leftIndex; i < rightIndex; i++){
