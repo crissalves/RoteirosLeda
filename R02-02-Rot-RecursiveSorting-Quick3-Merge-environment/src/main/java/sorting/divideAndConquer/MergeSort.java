@@ -56,10 +56,5 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 			j++;
 			k++;
 		}
-
-
-
-
-
 	}
 }
