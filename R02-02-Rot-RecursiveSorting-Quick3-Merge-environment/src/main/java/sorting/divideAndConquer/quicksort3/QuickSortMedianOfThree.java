@@ -2,7 +2,7 @@ package sorting.divideAndConquer.quicksort3;
 
 import sorting.AbstractSorting;
 import util.Util;
-import java.util.Arrays;
+
 
 /**
  * A classe QuickSortMedianOfThree representa uma variação do QuickSort que

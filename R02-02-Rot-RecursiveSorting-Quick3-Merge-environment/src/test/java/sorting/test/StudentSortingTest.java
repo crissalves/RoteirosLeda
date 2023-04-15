@@ -6,9 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import divideAndConquer.*;
+
 import sorting.AbstractSorting;
 import sorting.divideAndConquer.QuickSort;
+import sorting.divideAndConquer.MergeSort;
 import sorting.divideAndConquer.hybridMergesort.HybridMergeSort;
 import sorting.divideAndConquer.quicksort3.QuickSortMedianOfThree;
 

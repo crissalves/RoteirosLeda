@@ -1,8 +1,6 @@
 package sorting.divideAndConquer;
 
 import sorting.AbstractSorting;
-import sorting.util;
-import util.Util;
 
 /**
  * Quicksort is based on the divide-and-conquer paradigm. The algorithm chooses
