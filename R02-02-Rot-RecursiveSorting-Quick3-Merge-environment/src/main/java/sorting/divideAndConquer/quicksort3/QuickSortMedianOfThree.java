@@ -2,6 +2,7 @@ package sorting.divideAndConquer.quicksort3;
 
 import sorting.AbstractSorting;
 import util.Util;
+import java.util.Arrays;
 
 /**
  * A classe QuickSortMedianOfThree representa uma variação do QuickSort que
@@ -21,46 +22,66 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 		AbstractSorting<T> {
 
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		//Revisar essas Verificações antes de enviar.
-		
-		if(array == null && array.length <= 0){
-			throw IllegalArgumentException;
-		}else if(leftIndex < 0 && leftIndex >= rightIndex){
-			return;
-		}else if(rightIndex > array.length || leftIndex >= array.length || rightIndex <=0) {
-			return;
-		}else{
-			int center = leftIndex + (leftIndex - rightIndex) / 2;
-			medianOfThree(array, leftIndex, center, rightIndex);
-			Util.swap(array, center, rightIndex -1);
+		if (verifica(array, leftIndex, rightIndex)) {
+			if (leftIndex < rightIndex) {
+				int mid = leftIndex + (rightIndex - leftIndex) / 2;
+				medianOfThree(array, leftIndex, mid, rightIndex);
+				Util.swap(array, mid, rightIndex - 1);
+				int pivot = particion(array, leftIndex + 1, rightIndex - 1);
 
-			int pivot = partition(array, leftIndex + 1, rightIndex -1);
-
-			sort(array, leftIndex, pivot-1);
-			sort(array, pivot+1, rightIndex);
-		}
-	}
-	
-	private void medianOfThree(T[] array, int leftIndex, int center ,int rightIndex){
-		if(array[leftIndex].compareTo(array[center]) > 0){
-			Util.swap(array, rightIndex, center);
-		}
-		if(array[center].comparetTo(array[rightIndex]) > 0){
-			Util.swap(array, center, rightIndex);
-		}
-	}
-
-	private int partition(T[] array, int leftIndex, int rightIndex){
-		int pivot = array[left];
-		int i = leftIndex;
-
-		for(int j = leftIndex +1; j <= rightIndex; j++){
-			if(array[l].compareTo(array[j]) > 0){
-				i++;
-				Util.swap(array, i, j);
+				sort(array, leftIndex, pivot - 1);
+				sort(array, pivot + 1, rightIndex);
 			}
 		}
-		Util.swap(array,leftIndex,i);
-		return i;
-	}	
+	}
+
+	private void medianOfThree(T[] array, int leftIndex, int mid,
+							   int rightIndex) {
+
+		if (array[leftIndex].compareTo(array[rightIndex]) > 0) {
+			Util.swap(array, leftIndex, rightIndex);
+		}
+
+		if (array[mid].compareTo(array[rightIndex]) > 0) {
+			Util.swap(array, mid, rightIndex);
+		}
+
+		if (array[leftIndex].compareTo(array[mid]) > 0) {
+			Util.swap(array, leftIndex, mid);
+		}
+	}
+
+	// Particionamento.
+	private int particion(T[] array, int leftIndex, int rightIndex) {
+
+		T pivot = array[leftIndex - 1];
+		int inicial = leftIndex - 1;
+
+		for (int j = leftIndex; j < rightIndex; j++) {
+			if (array[j].compareTo(pivot) < 0) {
+				inicial++;
+				Util.swap(array, inicial, j);
+			}
+		}
+
+		Util.swap(array, leftIndex - 1, inicial);
+		return inicial;
+	}
+
+	//Verifica
+	private boolean verifica(T[] array, int leftIndex, int rightIndex) {
+		boolean result = true;
+
+		if (array == null || array.length <= 0) {
+			result = false;
+		} else if (leftIndex >= rightIndex || leftIndex < 0) {
+			result = false;
+		} else if (rightIndex > array.length || leftIndex >= array.length
+				|| rightIndex <= 0) {
+			result = false;
+		}
+
+		return result;
+	}
 }
+

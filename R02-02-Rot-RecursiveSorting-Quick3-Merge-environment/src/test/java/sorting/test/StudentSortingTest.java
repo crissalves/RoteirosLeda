@@ -40,9 +40,6 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
-		this.implementation = new MergeSort<>();
-		this.implementation = new QuickSort<>();
-		this.implementation = new HybridMergeSort<>();
 		this.implementation = new QuickSortMedianOfThree<>();
 	}
 
