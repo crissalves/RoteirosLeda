@@ -2,6 +2,8 @@ package sorting.divideAndConquer.hybridMergesort;
 
 import sorting.AbstractSorting;
 
+import java.util.Arrays;
+
 /**
  * A classe HybridMergeSort representa a implementação de uma variação do
  * MergeSort que pode fazer uso do InsertionSort (um algoritmo híbrido) da
@@ -32,73 +34,83 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	public void sort(T[] array, int leftIndex, int rightIndex) {
 		MERGESORT_APPLICATIONS = 0;
 		INSERTIONSORT_APPLICATIONS = 0;
-		hybridMergesort(array, leftIndex, rightIndex);
+		hybridMergeSort(array, leftIndex, rightIndex);
 	}
 
+	private void hybridMergeSort(T[] array, int leftIndex, int rightIndex) {
 
-	private void hybridMergesort(T[] array, int leftIndex, int rightIndex){
-		int contador = 0;
-		if(array == null){
-			throw IllegalArgumentException;
-		}else if(array.length <= 1 && leftIndex < rightIndex){
-			return;
-		}else if(contador > SIZE_LIMIT){
-			int meio = (leftIndex + rightIndex) / 2;
-			hybridMergesort(array, leftIndex, meio);
-			hybridMergesort(array, middle+1,leftIndex);
-			merge(array,leftIndex,meio,rightIndex);
-		}else{
-			insertionSort(array, leftIndex, leftIndex);
+		if (verifica(array, leftIndex, rightIndex)) {
+
+			if ((rightIndex - leftIndex) > SIZE_LIMIT) {
+				int middle = (leftIndex + rightIndex) / 2;
+
+				hybridMergeSort(array, leftIndex, middle);
+				hybridMergeSort(array, middle + 1, rightIndex);
+				merge(array, leftIndex, middle, rightIndex);
+			} else {
+				insertionSort(array, leftIndex, rightIndex);
+			}
 		}
 	}
 
-
-	private void merge(T[] array, int leftIndex, int meio, int rightIndex){
+	private void merge(T[] array, int leftIndex, int middle, int rightIndex) {
 		MERGESORT_APPLICATIONS ++;
-		T[] aux = new Array[array.length];
-		for(int i = leftIndex; i<= rightIndex; i++){
-			aux[i] = array[i];
-		}
+		T[] arrayAux = Arrays.copyOf(array, array.length);
 
 		int i = leftIndex;
-		int j = meio + 1;
-		int k = leftIndex;
+		int j = middle + 1;
+		int indexResult = leftIndex;
 
-		While(i <= meio && j <= rightIndex);{
-			if(aux[i].compareTo(aux[m]) > 0){
-				array[k] = aux[i];
+		while (i <= middle && j <= rightIndex) {
+			if (arrayAux[i].compareTo(arrayAux[j]) <= 0) {
+				array[indexResult] = arrayAux[i];
 				i++;
-			}else{
-				array[k] = aux[m];
-				m++;
+			} else {
+				array[indexResult] = arrayAux[j];
+				j++;
 			}
-			k++;
+			indexResult++;
 		}
 
-		while(i <= meio){
-			array[k] = aux[i];
+		while (i <= middle) {
+			array[indexResult] = arrayAux[i];
 			i++;
-			k++;
+			indexResult++;
 		}
-
-		while(j <= meio){
-			array[k] = aux[j];
+		while (j <= rightIndex) {
+			array[indexResult] = arrayAux[j];
 			j++;
-			k++;
+			indexResult++;
 		}
 	}
 
-	
-	private void insertionSort(T[] array, int leftIndex, int rightIndex){
-		INSERTIONSORT_APPLICATIONS ++;
-		if(leftIndex < rightIndex) {
-			for(int i = leftIndex; i < rightIndex; i++){
-				int j = i;
-				while(j > 0 && array[j].compareTo(array[j-1]) < 0){
-					Util.swap(array, j, j-1);
-					j -= 1;
-				}
+	private void insertionSort(T[] array, int leftIndex, int rightIndex) {
+		INSERTIONSORT_APPLICATIONS++;
+		for (int i = leftIndex + 1; i <= rightIndex; i++) {
+
+			int aux = i - 1;
+			T key = array[i];
+
+			while (aux >= leftIndex && array[aux].compareTo(key) > 0) {
+				array[aux+1] = array[aux];
+				aux--;
 			}
+			array[aux+1] = key;
 		}
 	}
+	private boolean verifica(T[] array, int leftIndex, int rightIndex) {
+		boolean result = true;
+
+		if (array == null || array.length <= 0) {
+			result = false;
+		} else if (leftIndex >= rightIndex || leftIndex < 0) {
+			result = false;
+		} else if (rightIndex > array.length || leftIndex >= array.length
+				|| rightIndex <= 0) {
+			result = false;
+		}
+
+		return result;
+	}
+
 }

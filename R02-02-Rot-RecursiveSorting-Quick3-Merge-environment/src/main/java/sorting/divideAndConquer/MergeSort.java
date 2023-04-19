@@ -12,49 +12,45 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		if(array == null){
-			throw IllegalArgumentException;
-		}else if(array.length <= 1 && leftIndex < rightIndex){
+		if(array == null) {
+			throw new IllegalArgumentException();
+		} else if (leftIndex >= rightIndex || array.length <= 1 || leftIndex > array.length-1 || rightIndex > array.length-1 || leftIndex < 0 || rightIndex < 0) {
 			return;
-		}else{
-			int meio = (leftIndex + rightIndex) / 2;
-			sort(array,leftIndex, middle);
-			sort(array, middle+1,leftIndex);
-			merge(array,leftIndex,meio,rightIndex);
+		} else {
+			int middle = (leftIndex+rightIndex)/2;
+			sort(array, leftIndex, middle);
+			sort(array, middle+1, rightIndex);
+			merge(array, leftIndex, middle, rightIndex);
 		}
 	}
 
-	private void merge(T[] array, int leftIndex, int meio, int rightIndex){
-		T[] aux = new Array[array.length];
-		for(int i = leftIndex; i<= rightIndex; i++){
-			aux[i] = array[i];
-		}
+	private void merge(T[] array, int leftIndex, int middle, int rightIndex) {
+		T[] auxiliar = array.clone();
 
-		int i = leftIndex;
-		int j = meio + 1;
-		int k = leftIndex;
+		int l = leftIndex;
+		int m = middle+1;
+		int p = leftIndex;
 
-		While(i <= meio && j <= rightIndex);{
-			if(aux[i].compareTo(aux[m]) > 0){
-				array[k] = aux[i];
-				i++;
-			}else{
-				array[k] = aux[m];
+		while(l <= middle && m <= rightIndex) {
+			if(auxiliar[l].compareTo(auxiliar[m]) < 0) {
+				array[p] = (T) auxiliar[l];
+				l++;
+			} else {
+				array[p] = (T) auxiliar[m];
 				m++;
-			}
-			k++;
+			} p++;
 		}
 
-		while(i <= meio){
-			array[k] = aux[i];
-			i++;
-			k++;
+		while(l <= middle) {
+			array[p] = (T) auxiliar[l];
+			l++;
+			p++;
 		}
 
-		while(j <= meio){
-			array[k] = aux[j];
-			j++;
-			k++;
+		while(m <= rightIndex) {
+			array[p] = (T) auxiliar[m];
+			m++;
+			p++;
 		}
 	}
 }
