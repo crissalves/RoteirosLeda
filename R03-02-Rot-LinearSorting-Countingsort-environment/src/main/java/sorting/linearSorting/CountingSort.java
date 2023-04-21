@@ -17,39 +17,55 @@ public class CountingSort extends AbstractSorting<Integer> {
 
 	@Override
 	public void sort(Integer[] array, int leftIndex, int rightIndex) {
-		if(array == null) {
-			throw new IllegalArgumentException();
-		} else if (leftIndex >= rightIndex || array.length <= 1 || leftIndex > array.length-1 || rightIndex > array.length-1 || leftIndex < 0 || rightIndex < 0) {
-			return;
-		}else{
-			int maiorElemento = 0;
+		boolean valid = validation(array, leftIndex, rightIndex);
+
+		if (valid) {
+			int maior = 0;
 			for(int i = leftIndex; i <= rightIndex; i++){
-				if(array[i] > maiorElemento){
-					maiorElemento = array[i];
+				if(array[i] > maior){
+					maior = array[i];
 				}
 			}
+			maior++;
 
-			Integer[] B = new Integer[maiorElemento];
+			Integer[] arrayContador = new Integer[maior];
 
 			for(int i = leftIndex; i <= rightIndex; i++){
-				B[array[i - 1]] += 1;
+				arrayContador[array[i]] += 1;
 			}
 
-			for(int i = 1 ; i < B.length ; i++){
-				B[i] += B[i - 1];
+			arrayContador[0] += leftIndex;
+			for(int i = 1 ; i < arrayContador.length ; i++){
+				arrayContador[i] += arrayContador[i - 1];
 			}
 
-			Integer[] C = new Integer[array.length];
+			Integer[] arrayOrdenado = new Integer[array.length];
 
-			for(int i = array.length; i >= 0; i--){
-				C[B[array[i] -1] -1]= array[i];
-				B[array[i] -1] -= 1;
+			for(int i = rightIndex; i >= leftIndex; i--){
+				arrayOrdenado[arrayContador[array[i]] -1]= array[i];
+				arrayContador[array[i]] -= 1;
 			}
 
-			for(int i = 0; i<= array.length; i++){
-				array[i] = C[i];
+			for(int i = leftIndex; i<= rightIndex; i++){
+				array[i] = arrayOrdenado[i];
 			}
 		}
+		
+	}
+
+	private boolean validation(Integer[] array, int leftIndex, int rightIndex) {
+		if (array == null)
+			return false;
+		if (array.length == 0)
+			return false;
+		if (leftIndex < 0 || rightIndex < 0)
+			return false;
+		if (leftIndex >= rightIndex)
+			return false;
+		if (rightIndex >= array.length)
+			return false;
+
+		return true;
 	}
 
 }
