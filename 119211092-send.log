@@ -2,8 +2,18 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-04-15T10:17:31.564-0300</date>
+  <date>2023-04-21T11:52:39.298-0300</date>
   <logger>CRISTIAN ALVES DA SILVA</logger>
   <level>FINE</level>
-  <message>File 119211092-CRISTIAN ALVES DA SILVA.zip was received. It was sent by CRISTIAN ALVES DA SILVA from IP 192.168.1.9 at 15-04-2023 10*17*31</message>
+  <message>File 119211092-CRISTIAN ALVES DA SILVA.zip was received. It was sent by CRISTIAN ALVES DA SILVA from IP 192.168.1.10 at 21-04-2023 11*52*39</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-04-21T11:54:29.487-0300</date>
+  <logger>CRISTIAN ALVES DA SILVA</logger>
+  <level>FINE</level>
+  <message>File 119211092-CRISTIAN ALVES DA SILVA.zip was received. It was sent by CRISTIAN ALVES DA SILVA from IP 192.168.1.10 at 21-04-2023 11*54*29</message>
 </record>

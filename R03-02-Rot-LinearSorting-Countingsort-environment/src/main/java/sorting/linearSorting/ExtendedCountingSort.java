@@ -34,7 +34,7 @@ public class ExtendedCountingSort extends AbstractSorting<Integer> {
 				menor = 0;
 			}
 
-			Integer[] arrayContador = new Integer[maior + menor];
+			int[] arrayContador = new int[maior + menor];
 			
 			for (int i = leftIndex; i <= rightIndex; i++) {
 				arrayContador[array[i] + menor] += 1;
@@ -45,7 +45,7 @@ public class ExtendedCountingSort extends AbstractSorting<Integer> {
 				arrayContador[i] += arrayContador[i - 1];
 			}
 
-			Integer[] arrayOrdenado = new int[array.length];
+			int[] arrayOrdenado = new int[array.length];
 
 			for (int i = rightIndex; i >= leftIndex; i--) {
 
