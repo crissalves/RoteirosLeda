@@ -13,37 +13,60 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public T head() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(isEmpty){
+			throw new RuntimeException("QueuIsEmptyException");
+		}else{
+			return array[0];
+		}
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return tail == -1;
 	}
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return tail == array.length;
 	}
 
 	private void shiftLeft() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		for(int i = 1 ; i <= tail ; i++){
+			array[i - 1] = array[i];
+		}
 	}
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(isFull()){
+			reSize(array);
+			enqueue(array);
+		}else if(isEmpty){
+			array[0] = element;
+			tail++;
+		}else{
+			array[tail] = element;
+			tail++;
+		}
 	}
+
+	//Método para dorbrar o tamanho do array caso ele esteja cheio
+	private void reSize(T[] array){
+		T[] newArray = new Object[array.length * 2];
+		for(int i = 0; i <= array.length; i++){
+			newArray[i] = array[i];
+		}
+		array = newArray;
+	}
+
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		aux = array[0];
+		array[0] = null;
+		shiftLeft();
+		return aux;
+		
 	}
 
 }
