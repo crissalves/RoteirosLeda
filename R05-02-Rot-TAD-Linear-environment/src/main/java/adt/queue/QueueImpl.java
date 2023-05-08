@@ -66,7 +66,6 @@ public class QueueImpl<T> implements Queue<T> {
 		array[0] = null;
 		shiftLeft();
 		return aux;
-		
 	}
 
 }
