@@ -13,7 +13,7 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public T head() {
-		if(isEmpty){
+		if(isEmpty()){
 			throw new RuntimeException("QueuIsEmptyException");
 		}else{
 			return array[0];
@@ -39,9 +39,9 @@ public class QueueImpl<T> implements Queue<T> {
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
 		if(isFull()){
-			reSize(array);
-			enqueue(array);
-		}else if(isEmpty){
+			reSize();
+		}
+		if(isEmpty()){
 			array[0] = element;
 			tail++;
 		}else{
@@ -51,18 +51,18 @@ public class QueueImpl<T> implements Queue<T> {
 	}
 
 	//Método para dorbrar o tamanho do array caso ele esteja cheio
-	private void reSize(T[] array){
-		T[] newArray = new Object[array.length * 2];
-		for(int i = 0; i <= array.length; i++){
-			newArray[i] = array[i];
-		}
-		array = newArray;
+	private void reSize(){
+		T[] newArray = (T[]) new Object[array.length * 2];
+        for (int i = 0; i <= array.length; i ++) {
+            newArray[i] = array[i];
+        }
+        array = newArray;
 	}
 
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		aux = array[0];
+		T aux = array[0];
 		array[0] = null;
 		shiftLeft();
 		return aux;

@@ -1,7 +1,5 @@
 package adt.queue;
 
-import javax.lang.model.element.Element;
-
 public class CircularQueue<T> implements Queue<T> {
 
 	private T[] array;
@@ -15,7 +13,7 @@ public class CircularQueue<T> implements Queue<T> {
 		head = -1;
 		tail = -1;
 		elements = 0;
-		capicity = size;
+		capacity = size;
 	}
 
 	@Override
@@ -36,9 +34,8 @@ public class CircularQueue<T> implements Queue<T> {
 	public T dequeue() throws QueueUnderflowException {
 		if(this.isEmpty()){
 			throw new RuntimeException("QueuIsEmptyException");
-			return -1;
 		}else{
-			element = array[head];
+			T element = array[head];
 			if(head == tail){
 				head = -1;
 				tail = -1;
