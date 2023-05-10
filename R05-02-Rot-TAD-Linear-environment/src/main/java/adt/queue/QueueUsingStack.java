@@ -1,9 +1,9 @@
 package adt.queue;
 
-import adt.stack.Stack;
+import java.util.Queue;
+import java.util.Stack;
+
 import adt.stack.StackImpl;
-import adt.stack.StackOverflowException;
-import adt.stack.StackUnderflowException;
 
 public class QueueUsingStack<T> implements Queue<T> {
 
@@ -17,45 +17,47 @@ public class QueueUsingStack<T> implements Queue<T> {
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		if (this.isFull()) {
-			throw new QueueOverflowException();
-		}
-		try {
-			if (element != null) {
-				while (!this.stack1.isEmpty()) {
-					this.stack2.push(this.stack1.pop());
-				}
+		if(stack1.isEmpty() && stack2.isEmpty()){
+			throw new RuntimeException("EmptyStackException");
+		}else{
+			while (!stack1.isEmpty()){ 
+            	stack2.push(stack1.pop()); 
+        	} 
 
-				this.stack1.push(element);
-				while (!this.stack2.isEmpty()) {
-					this.stack1.push(this.stack2.pop());
-				}
-			}
-		} catch (StackOverflowException | StackUnderflowException e) {
-			throw new QueueOverflowException();
-		}
-
+        	stack1.push(element); 
+  
+        	while (!stack2.isEmpty()){ 
+            	stack1.push(stack2.pop()); 
+        	}
+		} 
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		if (this.isEmpty()) {
-			throw new QueueUnderflowException();
-		}
-		try {
-			return this.stack1.pop();
-		} catch (StackUnderflowException e) {
-			throw new QueueUnderflowException();
-		}
+		if (isEmpty()){ 
+        	throw new RuntimeException("EmptyStackException");
+        } else{
+        	if (stack2.isEmpty()) {
+            	while (!stack1.isEmpty()) {
+                	stack2.push(stack1.pop());
+            	}
+        	}
+        	return stack2.pop();
+    	}
 	}
 
 	@Override
 	public T head() {
-		T head = null;
-		if (!isEmpty()) {
-			head = this.stack1.top();
+		if (isEmpty()) {
+            throw new IllegalStateException("EmptyStackException.");
+        }else{
+        	if (stack2.isEmpty()) {
+            	while (!stack1.isEmpty()) {
+            		stack2.push(stack1.pop());
+            	}
+        	}
+			return stack2.pop();
 		}
-		return head;
 	}
 
 	@Override
