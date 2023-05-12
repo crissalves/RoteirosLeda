@@ -1,13 +1,15 @@
 package adt.linkedList;
 
+import java.lang.reflect.Array;
+
 public class SingleLinkedListImpl<T> implements LinkedList<T> {
 
-	protected SingleLinkedListNode<T> head;
+	protected SingleLinkedListNode<T> head;;
 	private int size;
 
 	public SingleLinkedListImpl() {
 		this.head = new SingleLinkedListNode<T>();
-		this.size = -1;
+		this.size = 0;
 	}
 
 	@Override
@@ -28,32 +30,62 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 		T aux = this.head;
 
 		for(int i = 0; i <= this.size ;i++ ){
-			if(aux.T.equals(element)){
-				return aux.T;
+			if(aux.equals(element)){
+				return aux;
 			}else{
-				aux = aux.next();
+				aux = aux.next;
 			}
 		}
-		return aux.T;
+		return aux;
 	
 	}
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		if(isEmpty()){
+			this.last = element;
+			this.head = element;
+		}
+		T aux = this.head;
+		while(aux != null){
+			aux = aux.next;
+		}
+		element.prev = aux.prev;
+		element.next = aux.next;
+		this.size++;
+
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		if(isEmpty()){
+			throw new RuntimeException("LinkedList is empty");
+		}
+		T aux = this.head;
+		while(aux != element){
+			aux = aux.next;
+		}
+		element.prev.next = element.next;
+		element.next.prev = element.prev;
+		element.next = null;
+		element.prev = null;
+		this.size--;
+
 	}
 
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		T[] array = new Array(size);
+		T aux = this.head;
+		for(int i = 0 ; i <= size;i++){
+			if(aux == null){
+				aux = aux.next;
+			}else{
+				array[i] = aux;
+				aux = aux.next;
+			}
+		}
+		return array;
 	}
 
 	public SingleLinkedListNode<T> getHead() {

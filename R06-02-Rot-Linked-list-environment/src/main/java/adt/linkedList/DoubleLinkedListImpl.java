@@ -10,7 +10,7 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 	public void insertFirst(T element) {
 
 		if(isEmpty()){
-			this.tail = element;
+			this.last = element;
 			this.head = element;
 		}else{
 			element.next = this.head;
@@ -32,8 +32,8 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 
 	@Override
 	public void removeLast() {
-		this.tail = this.tal.prev;
-		this.tail.next = null;
+		this.last = this.tal.prev;
+		this.last.next = null;
 	}
 
 	public DoubleLinkedListNode<T> getLast() {
