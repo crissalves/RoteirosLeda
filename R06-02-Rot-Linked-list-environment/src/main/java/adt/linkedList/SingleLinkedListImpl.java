@@ -3,27 +3,39 @@ package adt.linkedList;
 public class SingleLinkedListImpl<T> implements LinkedList<T> {
 
 	protected SingleLinkedListNode<T> head;
+	private int size;
 
 	public SingleLinkedListImpl() {
 		this.head = new SingleLinkedListNode<T>();
+		this.size = -1;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		return this.head == null;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		return this.size;
 	}
 
 	@Override
 	public T search(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		if(isEmpty()){
+			throw new RuntimeException("LinkedList is empty");
+		}
+		T aux = this.head;
+
+		for(int i = 0; i <= this.size ;i++ ){
+			if(aux.T.equals(element)){
+				return aux.T;
+			}else{
+				aux = aux.next();
+			}
+		}
+		return aux.T;
+	
 	}
 
 	@Override
