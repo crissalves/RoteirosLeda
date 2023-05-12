@@ -13,59 +13,50 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public T head() {
-		if(isEmpty()){
-			throw new RuntimeException("QueuIsEmptyException");
-		}else{
-			return array[0];
+		T head = null;
+		if (!isEmpty()) {
+			head = this.array[0];
+			;
 		}
+		return head;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return tail == -1;
+		return this.tail == -1;
 	}
 
 	@Override
 	public boolean isFull() {
-		return tail == array.length;
+		return this.tail == this.array.length;
 	}
 
 	private void shiftLeft() {
-		for(int i = 1 ; i <= tail ; i++){
-			array[i - 1] = array[i];
+		for (int i = 0; i < this.tail; i++) {
+			this.array[i] = this.array[i + 1];
 		}
 	}
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		if(isFull()){
-			reSize();
+		if (isFull()) {
+			throw new QueueOverflowException();
 		}
-		if(isEmpty()){
-			array[0] = element;
-			tail++;
-		}else{
-			array[tail] = element;
-			tail++;
+		if (element != null) {
+			this.array[++this.tail] = element;
 		}
-	}
 
-	//Método para dorbrar o tamanho do array caso ele esteja cheio
-	private void reSize(){
-		T[] newArray = (T[]) new Object[array.length * 2];
-        for (int i = 0; i <= array.length; i ++) {
-            newArray[i] = array[i];
-        }
-        array = newArray;
 	}
-
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		T aux = array[0];
-		array[0] = null;
-		shiftLeft();
-		return aux;
+		if (isEmpty()) {
+			throw new QueueUnderflowException();
+		}
+		T dequeued = this.array[0];
+		this.shiftLeft();
+		this.tail--;
+		return dequeued;
 	}
 
 }
