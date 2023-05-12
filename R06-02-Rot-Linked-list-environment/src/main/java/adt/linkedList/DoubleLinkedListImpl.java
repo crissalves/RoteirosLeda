@@ -26,7 +26,7 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 		}else{
 			this.head = this.head.next;
 			this.head.prev = null;
-			this.head.prev.next = null;
+
 		}
 	}
 
@@ -34,7 +34,6 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 	public void removeLast() {
 		this.tail = this.tal.prev;
 		this.tail.next = null;
-		this.tail.next.prev = null;
 	}
 
 	public DoubleLinkedListNode<T> getLast() {
