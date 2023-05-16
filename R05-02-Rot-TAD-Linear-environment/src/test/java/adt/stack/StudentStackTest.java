@@ -1,14 +1,6 @@
 package adt.stack;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
-import org.junit.Before;
-import org.junit.Test;
-
-public class StudentStackTest {
-
-	public Stack<Integer> stack1;
+public Stack<Integer> stack1;
 	public Stack<Integer> stack2;
 	public Stack<Integer> stack3;
 
