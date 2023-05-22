@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import adt.hashtable.hashfunction.HashFunctionClosedAddressMethod;
 import adt.hashtable.open.AbstractHashtableOpenAddress;
-import adt.hashtable.open.HashtableOpenAddressQuadraticProbingImpl;
 import adt.hashtable.open.HashtableElement;
 
 public class StudentTestHashtableOpenAddressQuadraticProbing {
