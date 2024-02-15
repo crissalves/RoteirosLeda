@@ -2,9 +2,10 @@ package formas;
 
 public class Circulo implements Forma {
 
-    protected double raio;
+    private double raio;
 
-    public void Circulo(double raio){
+    public Circulo(double raio){
+        super();
         this.raio = raio;    
     }
 

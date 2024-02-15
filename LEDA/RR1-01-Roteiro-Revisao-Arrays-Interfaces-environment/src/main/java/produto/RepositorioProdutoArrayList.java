@@ -2,8 +2,6 @@ package produto;
 
 import java.util.ArrayList;
 
-import javax.management.RuntimeErrorException;
-
 /**
  * Classe que representa um repositório de produtos usando ArrayList como
  * estrutura sobrejacente. Alguns métodos (atualizar, remover e procurar) ou
@@ -13,7 +11,7 @@ import javax.management.RuntimeErrorException;
  *
  * @author Adalberto
  */
-public class RepositorioProdutoArrayList {
+public class RepositorioProdutoArrayList implements RepositorioProdutos {
 
 	/**
 	 * A estrutura onde os produtos sao mantidos. Voce nao precisa se preocupar
@@ -52,7 +50,12 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		return this.produtos.contains(new Produto(codigo, null, 0, null));
+		boolean resp = false;
+
+		int i = this.procurarIndice(codigo);
+		resp = (i==-1);
+
+		return resp;
 	}
 
 	/**
@@ -68,10 +71,11 @@ public class RepositorioProdutoArrayList {
 	 * utilizado.
 	 */
 	public void atualizar(Produto produto) {
-		if(!this.produtos.contains(produto)){
-			this.produtos.add(produto);
+		if(!produtos.contains(produto)){
+			throw new RuntimeException("Produto Inexistente");
 		}else{
-			throw new RuntimeErrorException(null, "Produto não emcontrado"); /// Rever Erro.
+			this.produtos.remove(produto);
+			this.produtos.add(produto);
 		}
 	}
 
@@ -83,8 +87,11 @@ public class RepositorioProdutoArrayList {
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(this.existe(codigo)) {
+			this.produtos.remove(new Produto(codigo, null, 0, null));
+		} else {
+			throw new RuntimeException("Produto Inexistente.");
+		}
 	}
 
 	/**
@@ -95,7 +102,15 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public Produto procurar(int codigo) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		Produto resp = null;
+		int index = this.procurarIndice(codigo);
+
+		if(index != -1) {
+			resp = (Produto) this.produtos.get(index);
+		} else {
+			throw new RuntimeException("Produto Inexistente");
+		}
+
+		return resp;
 	}
 }
