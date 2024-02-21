@@ -74,7 +74,7 @@ public class MetodosRecursivos {
 		if(n == 1){
 
 		}else{
-			result = progressaoAritmetica(termoInicial + razao, razao, n-1);
+			result = progressaoAritmetica(termoInicial, razao, n-1) + razao;
 		}
 		return result;
 	}
@@ -84,7 +84,7 @@ public class MetodosRecursivos {
 		if(n == 1){
 
 		} else {
-			result = progressaoGeometrica(termoInicial * razao , razao, n-1);
+			result = progressaoGeometrica(termoInicial, razao, n-1) * razao;
 		}	
 		return result;
 	}

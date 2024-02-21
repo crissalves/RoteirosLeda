@@ -40,8 +40,21 @@ public class TestarMetodosRecursivos {
 	}
 
 	@Test
-	public void potenciaDe2(){
+	public void potenciaDe2Test(){
 		Long resultado = metodosRecursivos.potenciaDe2(24);
+		assertEquals(576, resultado.longValue());
+	}
+
+	@Test 
+	public void progressaoAritmeticaTest(){
+		double resultado = metodosRecursivos.progressaoAritmetica(1, 2, 10);
+		assertEquals(21, resultado);
+	}
+
+	@Test
+	public void progressaoGeometricaTest(){
+		double resultado = metodosRecursivos.progressaoGeometrica(1, 2, 10);
+		assertEquals(512, resultado);
 	}
 }
 
