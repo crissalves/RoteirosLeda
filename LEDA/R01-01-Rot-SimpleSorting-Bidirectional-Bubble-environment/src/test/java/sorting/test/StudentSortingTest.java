@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
-import sorting.simpleSorting.SelectionSort;
+import sorting.simpleSorting.InsertionSort;
 
 public class StudentSortingTest {
 
@@ -40,8 +40,8 @@ public class StudentSortingTest {
 		// TODO O aluno deve instanciar sua implementação abaixo ao invés de
 		// null
 		//this.implementation = new BubbleSort<Integer>();
-		this.implementation = new SelectionSort<Integer>();
-		//this.implementation = new InsertionSort<Integer>();
+		//this.implementation = new SelectionSort<Integer>();
+		this.implementation = new InsertionSort<Integer>();
 
 	}
 
