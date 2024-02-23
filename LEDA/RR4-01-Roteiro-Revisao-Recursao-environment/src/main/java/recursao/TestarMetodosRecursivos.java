@@ -14,10 +14,10 @@ public class TestarMetodosRecursivos {
 	}
 
 	@Test
-	public void calcularSomaArray() {
+	public void calcularSomaArrayTest() {
 		int[] array = { -123, 0, 123 };
 		int resultado = metodosRecursivos.calcularSomaArray(array);
-		assertEquals(123, resultado);
+		assertEquals(0, resultado);
 	}
 
 	@Test
@@ -36,7 +36,7 @@ public class TestarMetodosRecursivos {
 	public void countNotNullTest(){
 		Object[] array = {23, null, "Olá", "Bom dia Adalberto", null, "amén senhor", 232, 2.32, null, null};
 		int resultado = metodosRecursivos.countNotNull(array);
-		assertEquals(4, resultado);
+		assertEquals(6, resultado);
 	}
 
 	@Test
@@ -48,13 +48,13 @@ public class TestarMetodosRecursivos {
 	@Test 
 	public void progressaoAritmeticaTest(){
 		double resultado = metodosRecursivos.progressaoAritmetica(1, 2, 10);
-		assertEquals(21, resultado);
+		assertEquals(19, resultado, 0.001);
 	}
 
 	@Test
 	public void progressaoGeometricaTest(){
 		double resultado = metodosRecursivos.progressaoGeometrica(1, 2, 10);
-		assertEquals(512, resultado);
+		assertEquals(512, resultado,0.001);
 	}
 }
 

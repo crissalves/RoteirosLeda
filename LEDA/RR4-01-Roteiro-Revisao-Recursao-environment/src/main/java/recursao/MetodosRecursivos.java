@@ -3,20 +3,18 @@ package recursao;
 public class MetodosRecursivos {
 
 	public int calcularSomaArray(int[] array){
-		int result = 0;
-		result = calcularSomaArray (array, 0);
+		int result;
+		result = array[0] + calcularSomaArray (array, 1);
 		return result;
 	}
 
 	private int calcularSomaArray(int[] array, int i){
-		int result = 0;
-		if(array.length == i){
-			return result;
+	int limit = array.length-1;
+		if(limit == i){
+			return array[i];
 		}else{
-			result += array[i];
-			calcularSomaArray(array, i++);	
+			return array[i] + calcularSomaArray(array, i+=1);
 		}
-		return result;
 	}
 
 	public long calcularFatorial(int n) {
@@ -39,21 +37,18 @@ public class MetodosRecursivos {
 	}
 
 	public int countNotNull(Object[] array) {
-		int result = 0;
-		result = countNotNull(array, 0);
-		return result;
+		return countNotNull(array, 0);
 	}
 
 	private int countNotNull(Object[] array, int n){
-		int count = 0;
+		int count=0;
 
 		if(array[n] != null){
 			count+=1;
-			countNotNull(array,n++);
 		}
 
 		if(n != array.length - 1){
-			count = count + countNotNull(array, n++);
+			count += countNotNull(array, n+=1);
 		}
 
 		return count;
@@ -74,7 +69,7 @@ public class MetodosRecursivos {
 		if(n == 1){
 
 		}else{
-			result = progressaoAritmetica(termoInicial, razao, n-1) + razao;
+			result = progressaoAritmetica(termoInicial + razao, razao, n-1);
 		}
 		return result;
 	}
