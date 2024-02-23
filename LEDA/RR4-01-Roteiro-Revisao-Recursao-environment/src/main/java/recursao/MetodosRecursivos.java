@@ -10,7 +10,7 @@ public class MetodosRecursivos {
 
 	private int calcularSomaArray(int[] array, int i){
 	int limit = array.length-1;
-		if(limit == i){
+ 		if(limit == i){
 			return array[i];
 		}else{
 			return array[i] + calcularSomaArray(array, i+=1);
@@ -55,11 +55,11 @@ public class MetodosRecursivos {
 	}
 
 	public long potenciaDe2(int expoente) {
-		int result = 1;
+		long result = 1;
 		if(expoente == 0){
 			//Caso Base;
 		} else{
-			result += 2 * potenciaDe2(expoente - 1);
+			result = 2 * potenciaDe2(expoente - 1);
 		}
 		return result;
 	}
