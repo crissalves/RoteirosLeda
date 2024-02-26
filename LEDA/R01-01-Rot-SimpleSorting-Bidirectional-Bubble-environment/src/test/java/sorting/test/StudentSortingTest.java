@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
-import sorting.variationsOfBubblesort.RecursiveBubbleSort;
+import sorting.variationsOfBubblesort.BidirectionalBubbleSort;
 
 public class StudentSortingTest {
 
@@ -42,7 +42,8 @@ public class StudentSortingTest {
 		//this.implementation = new BubbleSort<Integer>();
 		//this.implementation = new SelectionSort<Integer>();
 		//this.implementation = new InsertionSort<Integer>();
-		this.implementation = new RecursiveBubbleSort<Integer>();
+		//this.implementation = new RecursiveBubbleSort<Integer>();
+		this.implementation = new BidirectionalBubbleSort<Integer>();
 
 	}
 
