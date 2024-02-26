@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
-import sorting.simpleSorting.InsertionSort;
+import sorting.variationsOfBubblesort.RecursiveBubbleSort;
 
 public class StudentSortingTest {
 
@@ -41,7 +41,8 @@ public class StudentSortingTest {
 		// null
 		//this.implementation = new BubbleSort<Integer>();
 		//this.implementation = new SelectionSort<Integer>();
-		this.implementation = new InsertionSort<Integer>();
+		//this.implementation = new InsertionSort<Integer>();
+		this.implementation = new RecursiveBubbleSort<Integer>();
 
 	}
 
