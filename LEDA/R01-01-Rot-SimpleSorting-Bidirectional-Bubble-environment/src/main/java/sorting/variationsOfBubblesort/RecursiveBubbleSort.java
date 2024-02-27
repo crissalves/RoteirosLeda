@@ -30,7 +30,7 @@ public class RecursiveBubbleSort<T extends Comparable<T>> extends
 			}
 
 			if(trocou){
-				sort(array, leftIndex, rightIndex -=1);
+				sort(array, leftIndex, rightIndex -1);
 			}	
 		}
 	}
