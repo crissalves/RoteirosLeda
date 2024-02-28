@@ -27,27 +27,28 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
 		int left = leftIndex;
 		int mid = middle + 1;
-		int point = leftIndex;
+		int point = leftIndex;// Variavél que ira guardar as posições dos elementos do aux para o array final.
+
 
 		while(left <= middle && mid <= rightIndex){
-			if(aux[left].compareTo(aux[mid]) < 0){
-				array[point] = aux[left];
+			if(aux[left].compareTo(aux[mid]) < 0){//Comparação para ver qual das 2 partes restantes do Array é maior;
+				array[point] = aux[left]; //Adiciona na posição point.
 				left ++;
 
 			}else{
 				array[point] = aux[mid];
 				mid ++;
 			}
-			point ++; 
+			point ++; //Aumenta point para as próximas interações.
 		}
 
-		while (left <= middle) {
+		while (left <= middle) {//Adiciona os que sobraram a esquerda.
 			array[point] = aux[left];
 			left++;
 			point++;
 		}
 	
-		while (mid <= rightIndex) {
+		while (mid <= rightIndex) {//Adiciona os que sobraram a direita.
 			array[point] = aux[mid];
 			mid++;
 			point++;
