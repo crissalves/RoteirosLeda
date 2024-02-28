@@ -22,7 +22,7 @@ public class MergeSort<T extends Comparable<T>> extends AbstractSorting<T> {
 		}
 	}
 
-	public void merge(T[] array, int leftIndex, int middle, int rightIndex){
+	private void merge(T[] array, int leftIndex, int middle, int rightIndex){
 		T[] aux = array.clone();
 
 		int left = leftIndex;

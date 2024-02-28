@@ -14,7 +14,19 @@ public class QuickSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(leftIndex >= rightIndex){
+			return;
+		}else{
+			int pivot = partition(array,leftIndex, rightIndex);
+			sort(array,leftIndex, pivot);
+			sort(array, pivot + 1, rightIndex);
+		}
 	}
+
+	private int partition(T[] array, int leftIndex, int rightIndex) {
+
+		return -1;
+	}
+
+
 }
