@@ -1,5 +1,0 @@
-# Created at 2023-06-01T17:20:07.568
-Boot Manifest-JAR contains absolute paths in classpath 'd:\Programação\Faculdade\RoteirosLeda\R09-02-Rot-HeapBinaria-environment\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-
