@@ -1,6 +1,7 @@
 package sorting.divideAndConquer.hybridMergesort;
 
 import sorting.AbstractSorting;
+import util.Util;
 
 /**
  * A classe HybridMergeSort representa a implementação de uma variação do
@@ -30,7 +31,67 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	protected static int INSERTIONSORT_APPLICATIONS = 0;
 
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		MERGESORT_APPLICATIONS = 0;
+		INSERTIONSORT_APPLICATIONS = 0;
+		hybridMergesort(array,leftIndex,rightIndex);
+	}
+
+	private void hybridMergesort(T[]array, int leftIndex, int rightIndex){
+		if(rightIndex <= SIZE_LIMIT){
+			insertion(array,leftIndex, rightIndex);
+		}else{
+			int middle = (leftIndex + rightIndex) / 2;
+			hybridMergesort(array, leftIndex, middle);
+			hybridMergesort(array, middle + 1, rightIndex);
+			merge(array, leftIndex, middle, rightIndex);
+
+		}
+	}
+	
+
+	private void merge(T[] array, int leftIndex, int middle, int rightIndex) {
+		MERGESORT_APPLICATIONS += 1;
+		T[] aux = array.clone();
+
+		int left = leftIndex;
+		int mid = middle + 1;
+		int point = leftIndex;// Variavél que ira guardar as posições dos elementos do aux para o array final.
+
+
+		while(left <= middle && mid <= rightIndex){
+			if(aux[left].compareTo(aux[mid]) < 0){//Comparação para ver qual das 2 partes restantes do Array é maior;
+				array[point] = aux[left]; //Adiciona na posição point.
+				left ++;
+
+			}else{
+				array[point] = aux[mid];
+				mid ++;
+			}
+			point ++; //Aumenta point para as próximas interações.
+		}
+
+		while (left <= middle) {//Adiciona os que sobraram a esquerda.
+			array[point] = aux[left];
+			left++;
+			point++;
+		}
+	
+		while (mid <= rightIndex) {//Adiciona os que sobraram a direita.
+			array[point] = aux[mid];
+			mid++;
+			point++;
+		}
+	}
+
+	private void insertion(T[] array, int leftIndex, int rightIndex) {
+		INSERTIONSORT_APPLICATIONS += 1;
+		for(int i = leftIndex + 1; i <= rightIndex; i++){
+			int j = i - 1;
+			while (j >= 0 && array[j].compareTo(array[j + 1]) > 0) {
+				Util.swap(array, j, j + 1);
+				j = j - 1;
+			}
+		}
 	}
 }
+
