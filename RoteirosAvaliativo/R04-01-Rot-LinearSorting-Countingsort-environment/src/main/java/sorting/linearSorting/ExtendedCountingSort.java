@@ -41,14 +41,10 @@ public class ExtendedCountingSort extends AbstractSorting<Integer> {
 				arrayContador[array[i] - menor]++;
 			}
 
-			//System.out.println(Arrays.toString(arrayContador));
-
 			//Faz a frquencia relativa dos elementos do Array, sendo o próximo a soma dos anteriores + ele mesmo para atingir o valor máximo.
 			for(int i = 1; i < arrayContador.length; i++){
 				arrayContador[i] += arrayContador[i-1];
 			}
-
-			//System.out.println(Arrays.toString(arrayContador));
 
 			//Se tornou errado esta estourando algum array.
 			for(int i = rightIndex; i >= leftIndex; i--){

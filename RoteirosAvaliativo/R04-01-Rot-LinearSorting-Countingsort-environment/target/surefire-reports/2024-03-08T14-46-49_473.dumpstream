@@ -1,0 +1,5 @@
+# Created at 2024-03-08T14:46:49.727
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Programação\Faculdade\RoteirosLeda\RoteirosAvaliativo\R04-01-Rot-LinearSorting-Countingsort-environment\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
