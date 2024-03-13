@@ -4,38 +4,24 @@ public class FloorBinarySearchImpl implements Floor {
 
 	@Override
 	public Integer floor(Integer[] array, Integer x) {
-		int meio = array.length / 2;
-		if(array[meio] == x){
-			return array[meio];
-		}else if(array[meio] > x){
-			return floor(array, 0, meio, x);
-		}else{
-			return floor(array, meio, array.length -1, x);
-		}
+		mergeSort(array, 0, array.length -1);
+		return floor(array, 0, array.length -1, x, -1);
 	}
 	private void mergeSort(Integer[] array, int leftIndex, int righIndex){
 		
 	}
 
-	private Integer floor(Integer[] array, int inicio, int fim, Integer x){
-		int floor = -1;
-		while(inicio <= fim){
-			int meio = (inicio + fim) / 2;
-            if (array[meio] == x) {
-                return array[meio];
-            } else if (array[meio] < x) {
+	private Integer floor(Integer[] array, int inicio, int fim, Integer x, int floor){
+	if (inicio <= fim) {
+            int meio = (inicio + fim) / 2;
+            if (array[meio] <= x) {
                 floor = meio;
-                inicio = meio + 1;
-            } else{
-                fim = meio - 1;
+                return floor(array, meio + 1, fim, x, floor);
+            } else {
+                return floor(array, inicio, meio - 1, x, floor);
             }
-		}
-
-		if(floor == -1){
-			return -1;
-		}else {
-			return array[floor];
-		}
+        }
+        return array[floor];
 	}
 
 	public static void main(String[] args){
