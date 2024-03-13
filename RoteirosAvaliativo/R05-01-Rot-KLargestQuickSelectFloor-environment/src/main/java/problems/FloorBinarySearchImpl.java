@@ -13,6 +13,9 @@ public class FloorBinarySearchImpl implements Floor {
 			return floor(array, meio, array.length -1, x);
 		}
 	}
+	private void mergeSort(Integer[] array, int leftIndex, int righIndex){
+		
+	}
 
 	private Integer floor(Integer[] array, int inicio, int fim, Integer x){
 		int floor = -1;
