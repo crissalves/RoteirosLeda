@@ -1,5 +1,7 @@
 package orderStatistic;
 
+import util.Util;
+
 /**
  * O quickselect eh um algoritmo baseado no quicksort para
  * descobrir/selectionar, em tempo linear, a k-esima estatistica de ordem
@@ -42,7 +44,42 @@ public class QuickSelect<T extends Comparable<T>> {
 	 *
 	 */
 	public T quickSelect(T[] array, int k) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
-	}
+		if (array == null || array.length == 0 || k < 1 || k > array.length) {
+            return null;
+        }
+        return quickSelect(array, 0, array.length - 1, k);
+    }
+
+	private T quickSelect(T[] array, int leftIndex, int rightIndex, int k) {
+        if (leftIndex == rightIndex) {
+            return array[leftIndex];
+        }
+
+        int pivotIndex = partition(array, leftIndex, rightIndex);
+        int length = pivotIndex - leftIndex + 1;
+
+        if (k == length) {
+            return array[pivotIndex];
+        } else if (k < length) {
+            return quickSelect(array, leftIndex, pivotIndex - 1, k);
+        } else {
+            return quickSelect(array, pivotIndex + 1, rightIndex, k - length);
+        }
+    }
+
+    private int partition(T[] array, int leftIndex, int rightIndex) {
+        T pivot = array[rightIndex];
+        int i = leftIndex - 1;
+
+        for (int j = leftIndex; j < rightIndex; j++) {
+            if (array[j].compareTo(pivot) <= 0) {
+                i++;
+                Util.swap(array, i, j);
+            }
+        }
+
+        Util.swap(array, i + 1, rightIndex);
+        return i + 1;
+    }
+
 }

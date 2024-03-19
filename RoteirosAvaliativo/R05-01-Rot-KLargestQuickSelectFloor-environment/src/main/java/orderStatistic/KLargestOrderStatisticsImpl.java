@@ -1,5 +1,7 @@
 package orderStatistic;
 
+import util.Util;
+
 /**
  * Uma implementacao da interface KLargest que usa estatisticas de ordem para 
  * retornar um array com os k maiores elementos de um conjunto de dados/array.
@@ -29,10 +31,27 @@ public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLa
 
 	@Override
 	public T[] getKLargest(T[] array, int k) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
-		//este metodo deve obrigatoriamente usar o orderStatistics abaixo.
-	}
+		if (array == null || k < 1 || k > array.length) {
+            return (T[]) new Comparable[0];  
+        }
+        
+        T orderStatistic = orderStatistics(array, k);
+        
+        // Crie um array para armazenar os k maiores elementos
+        T[] result = (T[]) new Comparable[k];
+        
+        int index = 0;
+
+		for (int i = 0; i < array.length && index < k; i++) {
+			T element = array[i];
+			if (element.compareTo(orderStatistic) >= 0) {
+				result[index++] = element;
+			}
+		}
+        
+        return result;
+    }
+
 
 	/**
 	 * Metodo que retorna a k-esima estatistica de ordem de um array, usando
@@ -46,7 +65,37 @@ public class KLargestOrderStatisticsImpl<T extends Comparable<T>> implements KLa
 	 * @return
 	 */
 	public T orderStatistics(T[] array, int k){
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");		
+		 if (array == null || k < 1 || k > array.length) {
+            return null;
+        }
+        
+        quickSort(array, 0, array.length - 1);	// Ordenei o array usando quickSort pois funciona para arays de tamanho moderado.
+    
+        return array[k - 1];  // A k-ésima estatística de ordem será o elemento no índice k-1
 	}
+
+	private void quickSort(T[] array, int leftIndex, int rightIndex) {
+		if (leftIndex < rightIndex) {
+
+			int pivotIndex = partition(array, leftIndex, rightIndex);
+			quickSort(array, leftIndex, pivotIndex - 1);
+			quickSort(array, pivotIndex + 1, rightIndex);
+		}
+	}
+	
+
+	private int partition(T[] array, int leftIndex, int rightIndex) {
+		T pivot = array[rightIndex];
+		int i = leftIndex - 1;
+		for (int j = leftIndex; j < rightIndex; j++) {
+			if (array[j].compareTo(pivot) >= 0) {
+				i++;
+				Util.swap(array, i, j);
+			}
+		}
+
+		Util.swap(array, i + 1, rightIndex);
+		return i + 1;
+	}
+	
 }
