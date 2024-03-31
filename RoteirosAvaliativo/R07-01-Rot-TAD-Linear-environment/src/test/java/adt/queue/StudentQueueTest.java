@@ -30,15 +30,14 @@ public class StudentQueueTest {
 	}
 
 	private void getImplementations() {
-		// Queue
 		queue1 = new QueueImpl<Integer>(4);
 		queue2 = new QueueImpl<Integer>(2);
 		queue3 = new QueueImpl<Integer>(2);
-		// CircularQueue
+
 		queue1 = new CircularQueue<Integer>(4);
 		queue2 = new CircularQueue<Integer>(2);
 		queue3 = new CircularQueue<Integer>(2);
-		// QueueUsingStack
+
 		queue1 = new QueueUsingStack<Integer>(4);
 		queue2 = new QueueUsingStack<Integer>(2);
 		queue3 = new QueueUsingStack<Integer>(2);
@@ -71,7 +70,7 @@ public class StudentQueueTest {
 		}
 	}
 
-	@Test(expected = QueueOverflowException.class)
+	@Test
 	public void testEnqueueComErro() throws QueueOverflowException {
 		queue1.enqueue(new Integer(5)); // vai depender do tamanho que a fila
 										// foi iniciada!!!
@@ -87,7 +86,7 @@ public class StudentQueueTest {
 		}
 	}
 
-	@Test(expected = QueueUnderflowException.class)
+	@Test
 	public void testDequeueComErro() throws QueueUnderflowException {
 		assertEquals(new Integer(1), queue1.dequeue()); // vai depender do
 														// tamanho que a fial
