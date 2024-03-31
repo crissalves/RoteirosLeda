@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,18 +31,10 @@ public class StudentQueueTest {
 	}
 
 	private void getImplementations() {
-		// Queue
-		queue1 = new QueueImpl<Integer>(4);
-		queue2 = new QueueImpl<Integer>(2);
-		queue3 = new QueueImpl<Integer>(2);
-		// CircularQueue
-		queue1 = new CircularQueue<Integer>(4);
-		queue2 = new CircularQueue<Integer>(2);
-		queue3 = new CircularQueue<Integer>(2);
-		// QueueUsingStack
-		queue1 = new QueueUsingStack<Integer>(4);
-		queue2 = new QueueUsingStack<Integer>(2);
-		queue3 = new QueueUsingStack<Integer>(2);
+		// TODO O aluno deve ajustar aqui para instanciar sua implementação
+		queue1 = null;
+		queue2 = null;
+		queue3 = null;
 	}
 
 	// MÉTODOS DE TESTE

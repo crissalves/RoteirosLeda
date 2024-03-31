@@ -23,20 +23,13 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public boolean isEmpty() {
-		if(tail == -1){
-			return true;
-		}else{
-			return false;
-		}
+		return tail == -1;
 	}
 
 	@Override
 	public boolean isFull() {
-		if(array.length - 1 == tail){
-			return true;
-		}else{
-			return false;
-		}
+		return array.length - 1 == tail;
+	
 	}
 
 	private void shiftLeft() {
@@ -59,6 +52,7 @@ public class QueueImpl<T> implements Queue<T> {
 		if(!isEmpty()){
 			T aux = array[0];
 			shiftLeft();
+			this.tail --;
 			return aux;
 		} else{
 			throw new QueueUnderflowException();
