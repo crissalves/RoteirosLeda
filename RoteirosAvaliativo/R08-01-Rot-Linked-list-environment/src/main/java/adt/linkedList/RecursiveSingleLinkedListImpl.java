@@ -9,42 +9,75 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	}
 
-
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(data.equals(null)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(isEmpty()){
+			return 0;
+		}else{
+			return 1 + this.getNext().size();
+		}
 	}
 
 	@Override
 	public T search(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(isEmpty()){
+			return null;
+		}else{
+			if(this.getData() == element){
+				return this.getData();
+			}else{
+				return this.search(getNext().getData());
+			}
+		}
 	}
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(isEmpty()){
+			this.setData(element);
+			this.setNext(new RecursiveSingleLinkedListImpl<>());
+		}else{
+			this.insert(getNext().getData());
+		}
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(isEmpty()){
+
+		}else{
+			if(this.data == element){
+				this.setData(this.getNext().getData());
+				this.setNext(this.getNext().getNext());
+			}else{
+				this.remove(getNext().getData());
+			}
+		}
 	}
 
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T[] array = (T[]) new Comparable[this.size()];
+		this.toArray(array, 0);
+		return array;
 	}
+
+	private void toArray(T[] array, int i) {
+		if (!this.isEmpty()) {
+			array[i] = this.data;
+			this.next.toArray(array, i + 1);
+		}
+	}
+	
 
 	public T getData() {
 		return data;
