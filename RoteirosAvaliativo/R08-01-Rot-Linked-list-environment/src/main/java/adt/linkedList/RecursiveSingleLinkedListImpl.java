@@ -11,7 +11,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public boolean isEmpty() {
-		if(data.equals(null)){
+		if(this.getData() == null){
 			return true;
 		}else{
 			return false;
@@ -23,7 +23,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 		if(isEmpty()){
 			return 0;
 		}else{
-			return 1 + this.getNext().size();
+			return 1 + this.next.size();
 		}
 	}
 
@@ -32,10 +32,10 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 		if(isEmpty()){
 			return null;
 		}else{
-			if(this.getData() == element){
-				return this.getData();
+			if(this.data == element){
+				return this.data;
 			}else{
-				return this.search(getNext().getData());
+				return this.search(next.getData());
 			}
 		}
 	}
@@ -46,7 +46,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 			this.setData(element);
 			this.setNext(new RecursiveSingleLinkedListImpl<>());
 		}else{
-			this.insert(getNext().getData());
+			this.insert(this.next.getData());
 		}
 	}
 

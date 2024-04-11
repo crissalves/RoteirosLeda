@@ -28,6 +28,9 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 		lista2 = new DoubleLinkedListImpl<Integer>();
 		lista3 = new DoubleLinkedListImpl<Integer>(); 
 		
+		//lista1 = new RecursiveDoubleLinkedListImpl<Integer>();
+		//lista2 = new RecursiveDoubleLinkedListImpl<Integer>();
+		//lista3 = new RecursiveDoubleLinkedListImpl<Integer>();
 	}
 
 	// Métodos de DoubleLinkedList
