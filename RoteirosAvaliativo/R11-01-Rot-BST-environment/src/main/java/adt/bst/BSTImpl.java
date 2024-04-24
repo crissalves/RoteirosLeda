@@ -133,27 +133,60 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 
 	@Override
 	public void remove(T element) {	
-		///AAAAAAAAAAAAAAAAAa
+		
 
 		
 	}
 
 	@Override
 	public T[] preOrder() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T[] array = new T[size()];
+		preOrder(this.root,array,0);
+		return array;
 	}
+
+	private T[] preOrder(BSTNode node, T[] array, int i){
+		if(!node.isNil()){
+			array[i] = node.getData(this.root);
+			preOrder(node.getLeft(),array,i++);
+			preOrder(node.getRight(),array,i++);
+		}
+		return array;
+	}
+
+	
 
 	@Override
 	public T[] order() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T[] array = new T[size(this.root)];
+		order(this.root, array, 0);
+		return array;
+		
+	}
+
+	private T[] order(BSTNode node,T[] array, int i){
+		if(!node.isNil()){
+			order(node.getLeft(),array,i++);
+			array[i] = node.getData();
+			order(node.getRight(), array, i++);
+		}
 	}
 
 	@Override
 	public T[] postOrder() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T[] array = new T[size(this.root)];
+		postOrder(this.root,array,0);
+		return array;
+	}
+
+	private T[] postOrder(BSTNode node, T[] array, int i){
+		if(!node.isNil()){
+			postOrder(node.getLeft(),array, i++);
+			postOrder(node.getRight(),array,i++);
+			array[i] = node.getData();
+		}
+
+	
 	}
 
 	/**
